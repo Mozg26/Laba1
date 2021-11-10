@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 /**
  * A class representing a list item with a pointer to the next item.
  * @param <T> Item data type
@@ -88,7 +90,7 @@ public class Set <T> {
      * A method that adds a new item to the top of the list.
      * @param data The value of the new list item.
      */
-    void addition_head(T data) {
+    public void addition_head(T data) {
 
         if (!this.search(data)) {
             Element <T> temp = new Element<>();
@@ -109,7 +111,7 @@ public class Set <T> {
      * A method that adds a new item to the end of the list.
      * @param data The value of the new list item.
      */
-    void addition_tail(T data) {
+    public void addition_tail(T data) {
 
         if (!this.search(data)) {
             Element<T> temp = new Element<>();
@@ -174,24 +176,6 @@ public class Set <T> {
     }
 
     /**
-     * Method of comparing two lists.
-     * @param list The list to be compared with.
-     * @return True if lists are equal and false if not
-     */
-    boolean comp(Set<T> list) {
-        Element<T> a = list.head;
-        Element<T> b;
-
-        for(b = this.head; a != null && b != null; b = b.next) {
-            if (a.value != b.value)
-                return false;
-
-            a = a.next;
-        }
-        return a == null && b == null;
-    }
-
-    /**
      * The method for displaying the list to the console.
      */
     @Override
@@ -235,5 +219,13 @@ public class Set <T> {
             a = a.next;
         }
         return true;
+    }
+
+    /**
+     * Redefined method
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(head, tail);
     }
 }

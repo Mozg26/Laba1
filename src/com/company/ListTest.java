@@ -48,22 +48,13 @@ public class ListTest {
     @Test
     public void search() {
         int data = 3;
-        boolean flag = false;
         Set<Integer> arr = new Set<>(1);
 
         for(int i = 2; i < 6; ++i) {
             arr.addition_tail(i);
         }
 
-        Element<Integer> it = arr.getHead();
-
-        for(; it != null && !flag; it = it.next) {
-            if (it.value == data) {
-                flag = true;
-            }
-        }
-
-        assertTrue(flag);
+        assertTrue(arr.search(data));
     }
 
     /**
@@ -86,25 +77,5 @@ public class ListTest {
         }
 
         assertEquals(actual,expected);
-    }
-
-    /**
-     * Unit test of the comp() method
-     */
-    @Test
-    public void comp() {
-        Set<Integer> arr1 = new Set<>(1);
-
-        for(int i = 2; i < 6; ++i) {
-            arr1.addition_tail(i);
-        }
-
-        Set<Integer> arr2 = new Set<>(1);
-
-        for(int i = 2; i < 5; ++i) {
-            arr2.addition_tail(i);
-        }
-
-        assertFalse(arr1.comp(arr2));
     }
 }
